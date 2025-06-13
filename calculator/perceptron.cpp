@@ -1,12 +1,24 @@
-#include <iostream>
+#include <vector>
+#include "perceptron.h"
+
 using namespace std;
 
-int main() {
-  cout << "Perceptron Calculator Started." << endl;
+Perceptron::Perceptron(vector<float> iWeights, float iBias) {
+  weights = iWeights;
+  bias = iBias;
+}
 
-  // test to see if 
-  int* arr = new int[20 * 1024 * 1024]; 
-  arr[0] = 42;
-  delete[] arr;
+int Perceptron::Predict(vector<float> x) {
+  float linear_output = 0.0;
+  for (unsigned int i = 0; i < x.size(); ++i) {
+    linear_output += x[i] * weights[i];
+  }
+
+  linear_output += bias;
+
+  if(linear_output > 0){
+    return 1;
+  }
+
   return 0;
 }
