@@ -25,6 +25,5 @@ int Perceptron::Predict(vector<float> x) {
     
     int prediction = (linear_output > 0) ? 1 : 0;
     
-    cout << linear_output << endl;
     return prediction;
 }

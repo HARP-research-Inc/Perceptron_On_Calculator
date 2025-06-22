@@ -1,0 +1,7 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <sstream>
+#include "perceptron.h"
+using namespace std;vector<float>load_weights(const string&filename){vector<float> weights;ifstream infile(filename);string line;while(getline(infile,line)){istringstream iss(line);float w;while(iss>>w){weights.push_back(w);}}return weights;}float load_bias(const string&filename){ifstream infile(filename);float bias=0.0f;if(infile>>bias){return bias;}else{return 0.0f;}}std::vector<float>load_raw_image(const std::string& filename){std::ifstream file(filename,std::ios::binary);if(!file){return {};}std::vector<float>data(28*28);file.read(reinterpret_cast<char*>(data.data()),data.size()*sizeof(float));if(!file){return{};}return data;}int main(){vector<float>weights=load_weights("../calculator/weights_layer1.txt");float bias=load_bias("../calculator/biases_layer1.txt");Perceptron perceptron(weights, bias);vector<float>sample_input=load_raw_image("../calculator/bs/b_image.bin");if(sample_input.empty()){cerr<<"Failed to load image data."<<endl;return -1;}if(sample_input.size()!=weights.size()){cerr<<"Input size and weights size mismatch!"<<endl;return -1;}int prediction=perceptron.Predict(sample_input);char returnVal=(prediction==0)?'a':'b';cout<<"Prediction: "<<returnVal<<endl;return 0;}

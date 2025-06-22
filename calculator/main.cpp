@@ -55,7 +55,7 @@ int main() {
 
     Perceptron perceptron(weights, bias);
 
-    vector<float> sample_input = load_raw_image("as/a_image.bin");
+    vector<float> sample_input = load_raw_image("bs/b_image.bin");
 
     if (sample_input.empty()) {
         cerr << "Failed to load image data." << endl;
@@ -69,7 +69,9 @@ int main() {
 
     int prediction = perceptron.Predict(sample_input);
 
-    cout << "Prediction: " << prediction << endl;
+    char returnVal = (prediction == 0) ? 'a' : 'b';
+
+    cout << "Prediction: " << returnVal << endl;
 
     return 0;
 }
