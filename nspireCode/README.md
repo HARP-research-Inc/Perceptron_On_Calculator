@@ -1,11 +1,10 @@
 ## Background
 This goal of this project is to build a proof of concept of using a language model on a small device, suh as the TiNspire. Currently, we have embedded a perceptron which predicts between the letters 'a' and 'b'. Users are able to interact with the application through the use of their cursor, and buttons as described below
 
-## Required
-### To use application
+## Required To use application
 Ndless 3.6
 
-### To contribute
+## To contribute
 Ndless SDK
 
 ## How to use
